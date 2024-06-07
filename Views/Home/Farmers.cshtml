@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Agricultural_Web_Application.Models.User>
+@{
+    ViewBag.Title = "Farmers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 mb-5 text-center">
+                <h3 class="section-subtitle">Expert Farmers</h3>
+                <h2 class="section-title text-black mb-4">Meet The Team</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 mb-lg-0">
+                    <div class="person">
+                        <a href="/Home/UserDetails?id=@item.id" class="position-relative">
+                            <figure>
+                                <img src="@item.imgPath" alt="Image" class="img-fluid">
+                            </figure>
+                            <div class="person-contents">
+                                <h3>@item.fullname</h3>
+                                <span class="position">Farmer</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

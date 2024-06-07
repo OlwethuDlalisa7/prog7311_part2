@@ -1,0 +1,303 @@
+﻿@model Agricultural_Web_Application.Models.User
+
+@{
+    ViewBag.Title = "Products";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Open+Sans&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="~/css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="~/css/aos.css">
+    <link href="~/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <title>Agriculture Dot Net MVC Web Application</title>
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <div class="header-top bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-lg-3">
+                        <a href="index.html" class="logo">
+                            <img src="~/images/logo.png" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 d-none d-lg-block">
+
+                        <div class="quick-contact-icons d-flex align-items-center">
+                            <div class="icon align-self-center mt-3">
+                                <span class="icon-room text-primary"></span>
+                            </div>
+                            <div class="text">
+                                <span class="h4 d-block">San Francisco</span>
+                                <span class="caption-text">Mountain View, Fake st., CA</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <div class="quick-contact-icons d-flex align-items-center">
+                            <div class="icon align-self-center mt-3">
+                                <span class="icon-phone text-primary"></span>
+                            </div>
+                            <div class="text">
+                                <span class="h4 d-block">+1 2094 392 4312</span>
+                                <span class="caption-text">Call us</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <div class="quick-contact-icons d-flex align-items-center">
+                            <div class="icon align-self-center mt-3">
+                                <span class="icon-envelope text-primary"></span>
+                            </div>
+                            <div class="text">
+                                <span class="h4 d-block">info@gmail.com</span>
+                                <span class="caption-text">Email us</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 d-block d-lg-none text-right">
+                        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
+                            <span class="icon-menu h3"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+                <div class="container">
+                    <div class="d-flex align-items-center">
+
+                        <div class="mx-auto">
+                            <nav class="site-navigation position-relative text-right" role="navigation">
+                                <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
+                                    <li>
+                                        <a href="/Home/Index" class="nav-link text-left">Home</a>
+                                    </li>
+                                    @if (Session["role"].ToString() == "Employee")
+                                    {
+                                        <li>
+                                            <a href="/Home/About" class="nav-link text-left">About Us</a>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a href="/Home/Farmers" class="nav-link text-left dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Farmers</a>
+                                            <ul class="dropdown-menu" style="left: 0; text-align: left;">
+                                                <li><a href="/Home/AddFarmer" class="dropdown-item" style="color: #116530;">Add Farmer</a></li>
+                                                <li><a href="/Home/Farmers" class="dropdown-item" style="color: #116530;">View Farmer</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="/Home/Products" class="nav-link text-left">Products</a>
+                                        </li>
+                                    }
+                                    @if (Session["role"].ToString() == "Farmer")
+                                    {
+                                        <li class="nav-item dropdown">
+                                            <a href="/Home/Products" class="nav-link text-left dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                                            <ul class="dropdown-menu" style="left: 0; text-align: left;">
+                                                <li><a href="/Home/AddProduct" class="dropdown-item" style="color: #116530;">Add Product</a></li>
+                                                <li><a href="/Home/Products" class="dropdown-item" style="color: #116530;">View Products</a></li>
+                                            </ul>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a href="/Home/Profile" class="nav-link text-left">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Logout" class="nav-link text-left">Logout</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-section site-blocks-cover innerpage" style="background-image: url('/images/hero_6.jpg');">
+            <div class="container">
+                <div class="row align-items-center text-center">
+                    <div class="col-lg-12 mt-5" data-aos="fade-up">
+                        <h1>Farmer Details</h1>
+                        @*<p class="text-white text-center">
+                                <a href="index.html">Home</a>
+                                <span class="mx-2">/</span>
+                                <span>Login</span>
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Blog Start-->
+        <section class="wf100 p80 shop" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <div class="product-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pro-large">
+                                <img src="@Html.DisplayFor(model => model.imgPath)" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-text" style="padding: 20px; background-color: #f9f9f9; border-radius: 5px;">
+                                <h2 style="color: #333;">@Html.DisplayFor(model => model.fullname)</h2>
+                                <p style="color: #555;">Username: @Html.DisplayFor(model => model.email)</p>
+                                <p style="color: #555;">Email: @Html.DisplayFor(model => model.email)</p>
+                                <p style="color: #555;">Contact: @Html.DisplayFor(model => model.contact)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="py-5 bg-primary block-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h3 class="text-white">Subscribe To Newsletter</h3>
+                        <p class="opacity-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, reprehenderit!</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="#" class="form-subscribe d-flex align-items-stretch">
+                            <input type="email" class="form-control h-100" placeholder="Enter your e-mail">
+                            <input type="submit" class="btn btn-secondary px-4" value="Subcribe">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-lg-3">
+                        <p class="mb-4"><img src="~/images/logo-light.png" alt="Image" class="img-fluid"></p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>
+                        <p><a href="#">Learn More</a></p>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3 class="footer-heading"><span>Our Company</span></h3>
+                        <ul class="list-unstyled">
+                            <li><a href="/Home/About">About</a></li>
+                            <li><a href="/Home/Products">Products</a></li>
+                            <li><a href="/Home/Farmers">Our Team</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3 class="footer-heading"><span>Our Services</span></h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Mulching</a></li>
+                            <li><a href="#">Plowing</a></li>
+                            <li><a href="#">Planting</a></li>
+                            <li><a href="#">Watering</a></li>
+                            <li><a href="#">Seeding</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3 class="footer-heading"><span>Contact</span></h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Support Community</a></li>
+                            <li><a href="#">Press</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Our Partners</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copyright border-top pt-4">
+                            <p>
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- .site-wrap -->
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#116530" /></svg></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus-bootstrap-4/5.39.0/js/tempus-dominus-bootstrap-4.min.js"></script>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.stellar.min.js"></script>
+    <script src="~/js/jquery.countdown.min.js"></script>
+    <script src="~/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/js/jquery.easing.1.3.js"></script>
+    <script src="~/js/aos.js"></script>
+    <script src="~/js/jquery.fancybox.min.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+    <script src="~/js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+
+</body>
+
+</html>
+
+
+

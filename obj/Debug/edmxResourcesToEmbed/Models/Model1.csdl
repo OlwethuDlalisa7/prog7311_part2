@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Agricultural_Web_ApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="pimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="production_date" Type="DateTime" Precision="3" />
+    <Property Name="uid" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Products__uid__38996AB5" FromRole="Products" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="imgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__uid__38996AB5" FromRole="Users" ToRole="Products" />
+  </EntityType>
+  <Association Name="FK__Products__uid__38996AB5">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Agricultural_Web_ApplicationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Products__uid__38996AB5" Association="Self.FK__Products__uid__38996AB5">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

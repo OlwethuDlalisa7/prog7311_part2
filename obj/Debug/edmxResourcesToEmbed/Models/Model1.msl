@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Agricultural_Web_ApplicationModelStoreContainer" CdmEntityContainer="Agricultural_Web_ApplicationEntities">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Agricultural_Web_ApplicationModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pname" ColumnName="pname" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="pimage" ColumnName="pimage" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="production_date" ColumnName="production_date" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Agricultural_Web_ApplicationModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="imgPath" ColumnName="imgPath" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
